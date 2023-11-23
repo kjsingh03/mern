@@ -11,7 +11,7 @@ import instagram from './instagram.svg'
 export default function Footer() {
 
     return (
-        <div className="footer text-[.8vw] px-[12vw] text-gray-800/80 font-medium  flex justify-around">
+        <div className="footer text-[.9vw] px-[12vw] text-gray-800/80 font-medium  flex justify-around">
             <div className="flex flex-col gap-[1vw] p-[2vw] w-[25%]">
             <h1 className="text-[.9vw] text-black/90 font-bold">ONLINE SHOPPING</h1>
                 <div className='flex flex-col gap-[.3vw] cursor-pointer'>
@@ -46,28 +46,28 @@ export default function Footer() {
                 </div>
             </div>
             <div className="flex flex-col gap-[1vw] p-[2vw] w-[25%]">
-                <h1 className="text-[1vw] text-black/90 font-bold">EXPERIENCE MYNTRA APP ON MOBILE</h1>
+                <h1 className="text-[1vw] text-black/90 font-bold">EXPERIENCE APP ON MOBILE</h1>
                 <div className="flex gap-[2vw] w-[16vw]">
                     <div className='w-full'>
-                        <img src={playStore} className="w-full h-full object-cover" />
+                        <img src={playStore} className="w-full h-full cursor-pointer object-cover" />
                     </div>
                     <div className='w-full'>
-                        <img src={ios} className="w-full h-full object-cover" />
+                        <img src={ios} className="w-full h-full cursor-pointer object-cover" />
                     </div>
                 </div>
                 <h1 className="text-[1vw] text-black/90 font-bold">KEEP IN TOUCH</h1>
                 <div className="flex gap-[2vw] w-[16vw]">
                     <div className='w-full'>
-                        <img src={facebook} className="w-full h-full object-cover" />
+                        <img src={facebook} className="w-full h-full cursor-pointer object-cover" />
                     </div>
                     <div className='w-full'>
-                        <img src={twitter} className="w-full h-full object-cover" />
+                        <img src={twitter} className="w-full h-full cursor-pointer object-cover" />
                     </div>
                     <div className='w-full'>
-                        <img src={youtube} className="w-full h-full object-cover" />
+                        <img src={youtube} className="w-full h-full cursor-pointer object-cover" />
                     </div>
                     <div className='w-full'>
-                        <img src={instagram} className="w-full h-full object-cover" />
+                        <img src={instagram} className="w-full h-full cursor-pointer object-cover" />
                     </div>
                     
                 </div>

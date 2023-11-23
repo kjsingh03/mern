@@ -35,6 +35,9 @@ export const getAllProducts = async (req, res, next) => {
     try {
         const apiFeatures = new ApiFeatures(Product.find(), req.query).search().filter().sort().pagination();
         const products = await apiFeatures.query;
+        // apiFeatures.query
+        if(!products)
+            return res.status(404).json({ success: false, message: "Product not Found" })
         res.status(200).json({ "success": true, products });
     } catch {
         res.status(404).json({ success: false, message: "No products to display" })
@@ -44,6 +47,8 @@ export const getAllProducts = async (req, res, next) => {
 export const getProduct = async (req, res, next) => {
     try {
         const product = await Product.findOne({ _id: req.params.id });
+        if(!product)
+            return res.status(404).json({ success: false, message: "Product not Found" })
         res.status(200).json({ success: true, product });
     }
     catch (err) {
@@ -54,6 +59,8 @@ export const getProduct = async (req, res, next) => {
 export const updateProduct = async (req, res, next) => {
     try {
         const product = await Product.findOneAndUpdate({ _id: req.params.id }, req.body, { returnDocument: "after" });
+        if(!product)
+            return res.status(404).json({ success: false, message: "Product not Found" })
         res.status(200).json({ success: true, message: "product updated successfully", product });
     }
     catch (err) {
@@ -64,6 +71,8 @@ export const updateProduct = async (req, res, next) => {
 export const removeProduct = async (req, res, next) => {
     try {
         const product = await Product.findOneAndDelete({ _id: req.params.id });
+        if(!product)
+            return res.status(404).json({ success: false, message: "Product not Found" })
         res.status(200).json({ success: true, message: "product deleted successfully", product });
     }
     catch (err) {

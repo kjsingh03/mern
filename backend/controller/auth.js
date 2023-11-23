@@ -9,12 +9,16 @@ const privateKey = fs.readFileSync(path.join(path.resolve(), './private.key'), "
 export const createUser = (req, res) => {
     try {
         const user = new User(req.body);
-        bcrypt.hash(user.password, 10, (err, hash) => {
-            user.password = hash;
-            user.save()
-                .then(() => res.status(200).json({ success: "Account created successfully", user }))
-                .catch((err) => res.status(404).json({ success: false, message: err }));
-        })
+        user.save()
+            .then(() => {
+                res.status(200).json({ success: "Account created successfully", user });
+                bcrypt.hash(user.password, 10, (err, hash) => {
+                    user.password = hash;
+                    user.save();
+                })
+            })
+            .catch((err) => res.status(404).json({ success: false, message: err.message }))
+        
     }
 
     catch (err) {
@@ -24,10 +28,11 @@ export const createUser = (req, res) => {
 
 export const getUser = async (req, res) => {
     try {
-        const { email, password } = req.body;
+        const email = req.body.email;
+        const password =req.body.password;
 
         if (!email || !password) {
-            return res.status(400).json({ success: false, message: "Enter Email & Password" })
+            return res.status(400).json({ success: false, message: "Enter Valid Details" })
         }
 
         const user = await User.findOne({ email: email }).select('+password');
@@ -39,9 +44,9 @@ export const getUser = async (req, res) => {
                 jwt.sign({ email: req.body.email }, privateKey, { algorithm: 'RS256' }, (err, token) => {
                     user.token = token;
                     user.save()
-                        .then(()=> res.status(200).cookie("token",token,{ expires: new Date(Date.now() + process.env.COOKIE_EXP*24*60*60*1000), httpOnly: true }).json({ success: true, message: "User logged in successfully" }))
+                        .then(() => res.status(200).cookie("token", token, { expires: new Date(Date.now() + process.env.COOKIE_EXP * 24 * 60 * 60 * 1000), httpOnly: true }).json({ success: true, message: "User logged in successfully" }))
                         .catch((err) => res.status(404).json({ success: false, message: err }))
-                }) 
+                })
             } else
                 res.status(404).json({ success: false, message: "Invalid Password", error: err });
         });
@@ -52,11 +57,11 @@ export const getUser = async (req, res) => {
     }
 };
 
-export const logout = async(req,res,next)=>{
-    try{
-    res.cookie("token",null,{expires:new Date(Date.now()),httpOnly:true})
-    res.status(200).json({ success: true, message: "Logged out successfully" });
-}catch(err){
-    res.status(404).json({ success: false, message: "Failed to log out" });
-}
+export const logout = async (req, res, next) => {
+    try {
+        res.cookie("token", null, { expires: new Date(Date.now()), httpOnly: true })
+        res.status(200).json({ success: true, message: "Logged out successfully" });
+    } catch (err) {
+        res.status(404).json({ success: false, message: "Failed to log out" });
+    }
 }

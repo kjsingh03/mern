@@ -1,7 +1,15 @@
+@font-face {
+    font-family: "PP Mori";
+    src:url('./PPMori-SemiBold.otf');
+}
+
 * {
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
+    font-family: PP Mori;
+    font-weight:100;
+    background-color: #F3F3F1;
 }
 
 nav {
@@ -15,7 +23,7 @@ sup{
 
 .dropdown {
     position: relative;
-    padding:0 1.5vw 0 0;
+    
     border: .3vw solid transparent;
     cursor: pointer;
 }
@@ -25,70 +33,45 @@ sup{
 }
 
 .dropdown:hover {
-    border-bottom: .3vw solid rgb(249, 74, 182);
-}
-
-.dropdown:nth-child(2):hover {
-    border-bottom: .3vw solid rgb(253, 100, 11);
-    transform: translateX();
-}
-
-.dropdown:nth-child(3):hover {
-    border-bottom: .3vw solid rgb(179, 35, 246)
-}
-
-.dropdown:nth-child(4):hover {
-    border-bottom: .3vw solid rgb(2, 214, 207)
-    
+    border-bottom: .3vw solid rgb(0,0,0);
 }
 
 .dropContent {
-    width: auto;
     position: absolute;
     justify-content: center;
-    padding-left: 2vw;
-    transform: translateX(-1.9vw);
-    gap: .5vw;
-    font-weight: 400;
-    font-size: .9vw;
+    padding:.2vw;
+    transform: translate(-2vw);
+    gap: 1.5vw;
     display: none;
-    margin-top: 1.8vw;
     box-shadow:  0px .2vw 2vw rgba(0, 0, 0, 0.103);
+    z-index: 10;
+    border-radius: .5vw;
 }
 
 .dropContent h1 {
     font-weight: 700;
     margin-bottom: 0.5vw;
-    color: rgb(249, 74, 182);
-}
-
-.dropdown:nth-child(2) h1 {
-    color: rgb(253, 100, 11)
-    
-}
-
-.dropdown:nth-child(3) h1 {
-    color: rgb(179, 35, 246)
-}
-
-.dropdown:nth-child(4) h1 {
-    color: rgb(1, 205, 208)
+    color: rgb(0,0,0);
 }
 
 .dropContent ul {
     list-style-type: none;
     text-decoration: none;
-
+    gap:2vw;
 }
 
 .dropContent li {
-    padding: .15vw;
+    padding: .6vw;
+    width:100%;
+    border-radius: .8vw;;
 }
 
 .dropContent li:hover {
     font-weight: 700;
+    background-color: #eaeae8;
 }
 
 .footer p:hover{
-    font-weight: 700;
+    font-weight: 800;
+    text-decoration: underline;
 }

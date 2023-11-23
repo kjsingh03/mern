@@ -5,7 +5,7 @@ const authRouter=Router();
 
 authRouter
     .post('/signup',createUser)
-    .get('/login',getUser)
+    .post('/login',getUser)
     .delete('/logout',logout)
 
 export default authRouter;

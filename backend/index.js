@@ -28,20 +28,20 @@ app.use(cors())
     .use(express.json())
     .use(cookieParser())
     .use('/auth', authRouter)
-    .use((req, res, next) => {
-        try {
-            const token = req.cookies.token;
-            const decoded = jwt.verify(token, publicKey);
-            if (decoded.email) {
-                next()
-            } else {
-                res.status(401).json({ success: false, message: "Please login to access" });
-            }
-        }
-        catch (err) {
-            res.status(401).json({ success: false, message: "Please login to access" });
-        }
-    })
+    // .use((req, res, next) => {
+    //     try {
+    //         const token = req.cookies.token;
+    //         const decoded = jwt.verify(token, publicKey);
+    //         if (decoded.email) {
+    //             next()
+    //         } else {
+    //             res.status(401).json({ success: false, message: "Please login to access" });
+    //         }
+    //     }
+    //     catch (err) {
+    //         res.status(401).json({ success: false, message: "Please login to access" });
+    //     }
+    // })
     .use('/products', productRouter)
     .use('/users', userRouter)
 

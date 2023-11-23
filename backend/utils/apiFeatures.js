@@ -4,7 +4,7 @@ class ApiFeatures {
         this.queryStr = queryStr;
     }
     pagination() {
-        const limit = Number(this.queryStr.limit) || 5;
+        const limit = Number(this.queryStr.limit) || 12;
         const page = Number(this.queryStr.page) || 1;
         const skip = limit * (page - 1);
         this.query = this.query.limit(limit).skip(skip);
