@@ -23,9 +23,9 @@ sup{
 
 .dropdown {
     position: relative;
-    
     border: .3vw solid transparent;
     cursor: pointer;
+    padding:1vw 0;
 }
 
 .dropdown:hover .dropContent {
@@ -74,4 +74,22 @@ sup{
 .footer p:hover{
     font-weight: 800;
     text-decoration: underline;
+}
+
+
+.sizeDrop:hover .sizeHover{
+    display:flex;
+}
+
+.sizeHover:hover~.numberHover{
+    display:grid;
+}
+
+.numberHover:hover{
+    display:grid;
+}
+
+.active{
+    background-color: rgba(0, 0, 0, 0.916);
+    color:white;
 }

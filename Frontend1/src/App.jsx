@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Header />
-      <div className="py-[5vw]">
+      <div className="py-[3vw]">
         <Outlet />
       </div>
       <Footer />

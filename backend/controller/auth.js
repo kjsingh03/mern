@@ -6,19 +6,25 @@ import fs from 'fs'
 
 const privateKey = fs.readFileSync(path.join(path.resolve(), './private.key'), "utf-8")
 
-export const createUser = (req, res) => {
+export const createUser = async (req, res) => {
     try {
-        const user = new User(req.body);
-        user.save()
+        let user = await User.findOne({email:req.body.email})
+        console.log(user)
+        if(!user){
+        const newUser = new User(req.body);
+        newUser.save()
             .then(() => {
-                res.status(200).json({ success: "Account created successfully", user });
-                bcrypt.hash(user.password, 10, (err, hash) => {
-                    user.password = hash;
-                    user.save();
+                res.status(200).json({ success: "Account created successfully", newUser });
+                bcrypt.hash(newUser.password, 10, (err, hash) => {
+                    newUser.password = hash;
+                    newUser.save();
                 })
             })
             .catch((err) => res.status(404).json({ success: false, message: err.message }))
-        
+        }
+        else{
+            return res.status(404).json({ success: false, message: "User already Exist" })
+        }
     }
 
     catch (err) {
@@ -37,7 +43,7 @@ export const getUser = async (req, res) => {
 
         const user = await User.findOne({ email: email }).select('+password');
         if (!user)
-            return res.status(404).json({ success: false, message: "Invalid Credentails" });
+            return res.status(404).json({ success: false, message: "Invalid Email" });
 
         bcrypt.compare(password, user.password, function (err, result) {
             if (result) {

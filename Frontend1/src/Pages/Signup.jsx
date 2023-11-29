@@ -1,6 +1,5 @@
 import React,{useState} from 'react'
 import img from './pexels-photo-5827914.jpeg'
-import Container from '../components/Container.jsx'
 import Input from '../components/Input.jsx'
 import { Link } from 'react-router-dom'
 import Button from '../components/Button.jsx'
@@ -19,9 +18,9 @@ export default function Signup() {
         })
             .then((response) => {
                 document.querySelector("#err").innerHTML = response.data.success;
-                console.log(response.data)
+                console.log(response)
             })
-            .catch((err) => document.querySelector("#err").innerHTML = err.response.data.message.split(":")[2]);
+            .catch((err) => document.querySelector("#err").innerHTML = (err.response.data.message.split(':')[2]|| err.response.data.message));
             
     }
 

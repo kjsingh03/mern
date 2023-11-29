@@ -9,14 +9,14 @@ import { setProduct } from '../store/productSlice';
 
 function Shop() {
 
-  var [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  var getProducts = () => {
+  const getProducts = () => {
     axios.get("http://localhost:8080/products")
       .then((res) => setProducts(res.data.products))
-      .catch(err => console.log(err))
+      .catch(err => console.log(err.response.data.message))
   };
 
   useEffect(() => {
@@ -83,7 +83,7 @@ function Shop() {
 
   return (
     <div className="shop min-h-screen flex flex-col gap-[3vw] w-full">
-      <div className="fixed py-[8vw] md:py-[4vw] z-[5] lg:py-[2vw] px-[8vw] lg:px-[3.5vw] w-full max-w-[] flex justify-between  text-[3.5vw] md:text-[2.1vw] lg:text-[1.3vw] ">
+      <div className="fixed mt-[8vw] md:mt-[0vw] py-[6vw] md:py-[4vw] z-[5] lg:py-[2vw] px-[8vw] lg:px-[3.5vw] w-full max-w-[] flex justify-between items-center text-[3.5vw] md:text-[2.1vw] lg:text-[1.3vw] ">
         <div className="w-[50%] text-[4.8vw] md:text-[2.6vw] lg:text-[1.9vw]">
           Shoes ({products.length})
         </div>
@@ -112,7 +112,7 @@ function Shop() {
         </div>
       </div>
 
-      <div className="flex justify-between py-[24vw] md:py-[11vw] lg:py-[7vw] px-[10vw] md:px-[5vw] lg:px-[3.5vw] gap-[2vw] w-full">
+      <div className="flex justify-between md:mt-[0vw] mt-[18vw] py-[10vw] md:py-[11vw] lg:py-[7vw] px-[10vw] md:px-[5vw] lg:px-[3.5vw] gap-[2vw] w-full">
         <div className="filters hidden md:flex gap-[.4vw] items-start z-10 w-[15vw] md:w-[14vw] lg:w-[12vw] py-[1vw] text-[3.4vw] md:text-[2vw] lg:text-[1.4vw] fixed">
           <div className=''>Filters</div>
           <div className="flex w-[5vw] md:w-[2.6vw] md:py-[0vw] lg:w-[1.8vw]">

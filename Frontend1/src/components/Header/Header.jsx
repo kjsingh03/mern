@@ -26,7 +26,7 @@ export default function Header() {
     // }, []);
 
     return (
-        <nav className="flex fixed justify-between z-10 py-[2.8vw] md:py-[1.2vw] px-[1.5vw] md:px-[3vw] items-center w-full text-[1.8vw] md:text-[1.5vw] lg:text-[1vw] font-semibold text-black/90">
+        <nav className="flex fixed justify-between z-10 py-[2.8vw] md:py-[0vw] px-[0vw] md:px-[3vw] items-center w-full text-[1.8vw] md:text-[1.5vw] lg:text-[1vw] font-semibold text-black/90">
             {/* <div className="w-[8%] md:w-[4.5%] lg:w-[3.2%]">
                 <img src={logo} className="h-full w-full object-cover" />
             </div> */}

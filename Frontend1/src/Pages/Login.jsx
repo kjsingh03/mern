@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import img from './pexels-photo-3070918.jpeg'
-import Container from '../components/Container.jsx'
 import Input from '../components/Input.jsx'
 import { Link } from 'react-router-dom'
 import Button from '../components/Button.jsx'
@@ -22,7 +21,12 @@ function Login() {
             .then( res => {document.querySelector("#err").innerHTML = res.data.message
                 navigate("/shop");
         })
-            .catch( err => document.querySelector("#err").innerHTML = err.response.data.message)
+            .catch( err => document.querySelector("#err").innerHTML = err.response.data.message);
+
+            setTimeout(()=>{
+                document.querySelector("#err").innerHTML = "";
+            },2000)
+
     }
     console.log(email,password)
 

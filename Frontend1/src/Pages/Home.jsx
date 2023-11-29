@@ -1,43 +1,15 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import {useNavigate} from 'react-router-dom'
 
 function Home() {
 
-  const [products, setProducts] = useState([]);
-
-  const product = {
-    _id: "6554b83a9bf5c263e16766d10",
-    name: "iphone1111",
-    description: "iphone",
-    price: 12000.5,
-    discount: 0,
-    rating: 0,
-    stock: 1,
-    brand: "apple",
-    category: "smartphone",
-    images: [],
-    section: "Electronics",
-    noOfReviews: [],
-    createdAt: "2023-11-20T17:55:17.353Z",
-    user: "6558c802568f41f6068bcd03"
-}
-
-  useEffect(() => {
-    const getProducts = async () => {
-      const res = await axios.get("http://localhost:8080/products");
-      const products = await res.data.products;
-      setProducts(products);
-    }
-    getProducts();
-  },[])
-
-  const addProduct = () =>{
-    setProducts([...products,product]);
-  }
+  const navigate=useNavigate();
 
   return (
-    <div className="min-h-screen">
-      
+    <div className="min-h-[80vh] text-center flex flex-col justify-center items-center gap-[1vw]">
+      <h1 className="text-[2vw]">Welcome to my Store</h1>
+      <p onClick={()=> navigate("/signup")} className='bg-black text-white border-[.1vw] border-transparent hover:border-[.1vw] hover:border-black p-[1vw] rounded-[2vw] cursor-pointer hover:bg-white hover:text-black' >Kindly Signup first</p>
     </div>
   )
 }

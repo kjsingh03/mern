@@ -8,8 +8,9 @@ import path from 'path'
 const publicKey =fs.readFileSync(path.join(path.resolve(),'../backend/public.key'))
 
 export const createProduct = async (req, res) => {
-    const product = new Product(req.body);
+    
     try {
+        const product = new Product(req.body);
         const token = req.cookies.token;
         const decoded = jwt.verify(token, publicKey);
         if (decoded.email) {
@@ -24,9 +25,7 @@ export const createProduct = async (req, res) => {
         }
     }
     catch (err) {
-        const token = req.cookies.token;
-        const decoded = jwt.verify(token, publicKey);
-        res.status(401).json({ success: false, message: "failed to get user" });
+        res.status(401).json({ success: false, message: err.message });
     }
 
 }
