@@ -25,8 +25,8 @@ export default function Signup() {
     }
 
 return (
-    <div className="flex">
-        <div className="w-[70%] h-[40vw] overflow-hidden">
+    <div className="flex mt-[1.3vw]">
+        <div className="w-[70%] h-[41vw] overflow-hidden">
             <img src={img} className="w-full h-full object-cover" />
         </div>
         <div className="w-[30%]">

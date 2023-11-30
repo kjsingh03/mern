@@ -77,7 +77,7 @@ sup{
 }
 
 
-.sizeDrop:hover .sizeHover{
+/* .sizeDrop:hover .sizeHover{
     display:flex;
 }
 
@@ -87,7 +87,7 @@ sup{
 
 .numberHover:hover{
     display:grid;
-}
+} */
 
 .active{
     background-color: rgba(0, 0, 0, 0.916);

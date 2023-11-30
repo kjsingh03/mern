@@ -5,6 +5,7 @@ import wishlist from "./wishlist.svg";
 import bag from "./bag-smile.svg";
 import search from "./search.svg";
 import axios from "axios";
+import {Link} from 'react-router-dom'
 
 export default function Header() {
     const [products, setProducts] = useState([]);
@@ -26,17 +27,17 @@ export default function Header() {
     // }, []);
 
     return (
-        <nav className="flex fixed justify-between z-10 py-[2.8vw] md:py-[0vw] px-[0vw] md:px-[3vw] items-center w-full text-[1.8vw] md:text-[1.5vw] lg:text-[1vw] font-semibold text-black/90">
+        <nav className="flex fixed justify-between z-10 py-[2.8vw] md:py-[.5vw] px-[0vw] md:px-[3vw] items-center w-full text-[1.8vw] md:text-[1.5vw] lg:text-[1vw] font-semibold text-black/90">
             {/* <div className="w-[8%] md:w-[4.5%] lg:w-[3.2%]">
                 <img src={logo} className="h-full w-full object-cover" />
             </div> */}
-            <div className="flex items:around w-[54%] md:w-[38%]  text-[2.5vw] md:text-[1.7vw] lg:text-[1.07vw] font-semibold">
-                {sections &&
+            <div className="flex justify-around w-[54%] md:w-[38%]  text-[2.5vw] md:text-[1.7vw] lg:text-[1.07vw] font-semibold">
+                {/* {sections &&
                     sections.map((section) => (
                         <div className="dropdown  hover:font-bold" key={section.name}>
                             <div className="dropBtn px-[2vw]">{section.name}</div>
                             <div className="dropContent">
-                                {/* name
+                                 name
                                 <ul>
                                     <li>example1</li>
                                     <li>example2</li>
@@ -53,10 +54,14 @@ export default function Header() {
                                         <li>example4</li>
                                         <li>example5</li>
                                     </ul>
-                                </div> */}
+                                </div> 
                             </div>
                         </div>
-                    ))}
+                    ))} */}
+                    <Link className="cursor-pointer hover:border-b-[.05vw] hover:border-b-black border-[.05vw] border-transparent py-[1vw]" to="/">Home</Link>
+                    <Link className="cursor-pointer hover:border-b-[.05vw] hover:border-b-black border-[.05vw] border-transparent py-[1vw]" to="/signup">SignUp</Link>
+                    <Link className="cursor-pointer hover:border-b-[.05vw] hover:border-b-black border-[.05vw] border-transparent py-[1vw]" to="/login">SignIn</Link>
+                    <Link className="cursor-pointer hover:border-b-[.05vw] hover:border-b-black border-[.05vw] border-transparent py-[1vw]" to="/shop">Shop</Link>
             </div>
             <div className="hidden md:flex w-[12%] md:w-[15%] lg:w-[30%] rounded-[.5vw] items-center justify-center lg:gap-[1vw] lg:border-[.05vw] lg:p-[.5vw] border-gray-400/60">
                 <div className="w-[25%] md:w-[15%] lg:w-[4%] flex flex-col items-center">
